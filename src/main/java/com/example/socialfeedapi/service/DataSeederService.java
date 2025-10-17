@@ -53,13 +53,13 @@ public class DataSeederService {
         if (existingComments < targetComments) generateComments(targetComments - (int) existingComments);
         if (existingLikes < targetLikes) generateLikes(targetLikes - (int) existingLikes);
 
-        System.out.println("✅ Data seeding completed successfully!");
+        System.out.println("Data seeding completed successfully!");
     }
 
     // ---------------- USERS ----------------
     @Transactional
     public void generateUsers(int count) {
-        System.out.println("👥 Generating users...");
+        System.out.println("Generating users...");
         List<User> batch = new ArrayList<>();
         long start = userRepository.count();
 
@@ -75,13 +75,13 @@ public class DataSeederService {
             }
         }
         if (!batch.isEmpty()) userRepository.saveAllAndFlush(batch);
-        System.out.println("✅ Users generated: " + count);
+        System.out.println("Users generated: " + count);
     }
 
     // ---------------- POSTS ----------------
     @Transactional
     public void generatePosts(int count) {
-        System.out.println("📝 Generating posts...");
+        System.out.println("Generating posts...");
         List<User> users = userRepository.findAll();
         List<Post> batch = new ArrayList<>();
         long start = postRepository.count();
@@ -99,13 +99,13 @@ public class DataSeederService {
             }
         }
         if (!batch.isEmpty()) postRepository.saveAllAndFlush(batch);
-        System.out.println("✅ Posts generated: " + count);
+        System.out.println("Posts generated: " + count);
     }
 
     // ---------------- COMMENTS ----------------
     @Transactional
     public void generateComments(int count) {
-        System.out.println("💬 Generating comments...");
+        System.out.println("Generating comments...");
         List<User> users = userRepository.findAll();
         List<Post> posts = postRepository.findAll();
         List<Comment> batch = new ArrayList<>();
@@ -125,13 +125,13 @@ public class DataSeederService {
             }
         }
         if (!batch.isEmpty()) commentRepository.saveAllAndFlush(batch);
-        System.out.println("✅ Comments generated: " + count);
+        System.out.println("Comments generated: " + count);
     }
 
     // ---------------- LIKES ----------------
     @Transactional
     public void generateLikes(int count) {
-        System.out.println("❤️ Generating likes...");
+        System.out.println("Generating likes...");
         List<User> users = userRepository.findAll();
         List<Post> posts = postRepository.findAll();
         List<Like> batch = new ArrayList<>();
@@ -158,7 +158,7 @@ public class DataSeederService {
         }
 
         if (!batch.isEmpty()) likeRepository.saveAllAndFlush(batch);
-        System.out.println("✅ Likes generated: " + count);
+        System.out.println("Likes generated: " + count);
     }
 
     // ---------------- HELPERS ----------------
